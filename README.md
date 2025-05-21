@@ -1,6 +1,6 @@
 Gabriel Galski Machado - AOC II - M2
 
-Implementar um programa C para calcular os caminhos mínimos
+Implementar um programa para calcular os caminhos mínimos
 entre os vértices de um Grafo utilizando o algorítmo de Dijsktra.
 
 1. Permitir o armazenamento de até 20 vértices

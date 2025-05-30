@@ -158,14 +158,14 @@ def find(parent, x):
     return parent[x]
 
 
-"""""
+"""
 ===========================================================
-mst
+kruskal
 algoritmo de Kruskal para calcular a MST
 ===========================================================
-"""""
+"""
 
-def mst(grafo):
+def kruskal(grafo):
     if not grafo:
         print("Não há grafo na memória.")
         return
@@ -188,7 +188,7 @@ def mst(grafo):
     for peso, u, v in arestas:
         if find(parent, u) != find(parent, v):
             union(parent, rank, u, v)
-            mst_arestas.append((u, v))
+            mst_arestas.append((u, v, peso))
 
     componentes = {}
     for v in grafo:
@@ -201,8 +201,13 @@ def mst(grafo):
     for i, root in enumerate(componentes, 1):
         vertices = sorted(componentes[root])
         print(f"MST {i} ({', '.join(vertices)})")
+        print("Arestas:")
+        for u, v, peso in mst_arestas:
+            if find(parent, u) == root:
+                print(f"  {u} - {v} ({peso})")
     if not componentes:
         print("Não há componentes conexos no grafo.")
+
 
 """""
 ===========================================================
@@ -217,7 +222,7 @@ def menu(grafo, todosVertices):
         return
 
     print("\n--- Calcular Distância Mínima ---")
-    print("Vértices declarados:", ", ".join(sorted(list(todosVertices))))
+    print("Vértices:", ", ".join(sorted(list(todosVertices))))
 
     while True:
         ver1 = input(f"Digite o vértice de 1 (A-T): ").upper()
@@ -266,7 +271,7 @@ if __name__ == "__main__":
             case '2':
                 menu(grafo, todosVertices)
             case '3':
-                mst(grafo)
+                kruskal(grafo)
             case '4':
                 print("saindo...")
                 break
